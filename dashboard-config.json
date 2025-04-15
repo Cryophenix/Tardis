@@ -1,0 +1,473 @@
+{
+  "timestamp": "2025-04-15T13:57:34.779Z",
+  "stations": [
+    "Marseille",
+    "Paris",
+    "Lyon",
+    "Bordeaux",
+    "Nice",
+    "Lille"
+  ],
+  "kpiCards": [
+    {
+      "id": "kpi-total-trains",
+      "title": "Total Trains",
+      "value": 8,
+      "description": "Monitored in dataset",
+      "icon": "Train",
+      "showProgress": false
+    },
+    {
+      "id": "kpi-average-delay",
+      "title": "Average Delay",
+      "value": 16.3,
+      "description": "Across all routes",
+      "icon": "Clock",
+      "showProgress": false
+    },
+    {
+      "id": "kpi-on-time-rate",
+      "title": "On-time Rate",
+      "value": 37.5,
+      "description": "Within threshold",
+      "icon": "TrendingUp",
+      "showProgress": true
+    },
+    {
+      "id": "kpi-cancellation-rate",
+      "title": "Cancellation Rate",
+      "value": 5.2,
+      "description": "Across all services",
+      "icon": "AlertTriangle",
+      "showProgress": true
+    },
+    {
+      "id": "kpi-passenger-satisfaction",
+      "title": "Passenger Satisfaction",
+      "value": 82.3,
+      "description": "Overall rating",
+      "icon": "ThumbsUp",
+      "showProgress": true
+    }
+  ],
+  "sections": {
+    "dashboard": {
+      "title": "Dashboard Overview",
+      "charts": [
+        {
+          "gridClass": "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3",
+          "items": [
+            {
+              "id": "chart-delay-by-station",
+              "type": "bar",
+              "title": "Average Delay by Station",
+              "description": "Average delay in minutes by station",
+              "data": [
+                {
+                  "station": "Marseille",
+                  "delay": 12.5
+                },
+                {
+                  "station": "Paris",
+                  "delay": 8.3
+                },
+                {
+                  "station": "Lyon",
+                  "delay": 15.7
+                },
+                {
+                  "station": "Bordeaux",
+                  "delay": 18.2
+                },
+                {
+                  "station": "Nice",
+                  "delay": 10.9
+                },
+                {
+                  "station": "Lille",
+                  "delay": 14.1
+                }
+              ],
+              "options": {
+                "categoryKey": "station",
+                "bars": [
+                  {
+                    "dataKey": "delay",
+                    "fill": "hsl(var(--chart-1))"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "chart-delay-distribution",
+              "type": "pie",
+              "title": "Delay Distribution",
+              "description": "Distribution of delay times across all trains",
+              "data": [
+                {
+                  "name": "On Time (0-1 min)",
+                  "value": 25,
+                  "color": "#10b981"
+                },
+                {
+                  "name": "Minor Delay (1-5 min)",
+                  "value": 37.5,
+                  "color": "#f59e0b"
+                },
+                {
+                  "name": "Significant Delay (5-15 min)",
+                  "value": 25,
+                  "color": "#ef4444"
+                },
+                {
+                  "name": "Major Delay (15+ min)",
+                  "value": 12.5,
+                  "color": "#7f1d1d"
+                }
+              ],
+              "options": {
+                "pies": [
+                  {
+                    "dataKey": "value",
+                    "nameKey": "name",
+                    "colors": ["#10b981", "#f59e0b", "#ef4444", "#7f1d1d"]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "gridClass": "grid grid-cols-1 gap-6 md:grid-cols-2",
+          "items": [
+            {
+              "id": "chart-delay-trends",
+              "type": "line",
+              "title": "Delay Trends Over Time",
+              "description": "Average delays by month",
+              "data": [
+                {
+                  "date": "2024-01",
+                  "averageDelay": 18.7,
+                  "peakDelay": 35.2,
+                  "onTimePercentage": 55.3
+                },
+                {
+                  "date": "2024-02",
+                  "averageDelay": 16.3,
+                  "peakDelay": 32.0,
+                  "onTimePercentage": 60.0
+                },
+                {
+                  "date": "2024-03",
+                  "averageDelay": 14.8,
+                  "peakDelay": 29.5,
+                  "onTimePercentage": 63.2
+                },
+                {
+                  "date": "2024-04",
+                  "averageDelay": 15.2,
+                  "peakDelay": 30.1,
+                  "onTimePercentage": 62.5
+                },
+                {
+                  "date": "2024-05",
+                  "averageDelay": 17.5,
+                  "peakDelay": 33.8,
+                  "onTimePercentage": 58.9
+                },
+                {
+                  "date": "2024-06",
+                  "averageDelay": 19.2,
+                  "peakDelay": 36.5,
+                  "onTimePercentage": 54.1
+                }
+              ],
+              "options": {
+                "categoryKey": "date",
+                "lines": [
+                  {
+                    "dataKey": "averageDelay",
+                    "stroke": "hsl(var(--chart-1))"
+                  },
+                  {
+                    "dataKey": "peakDelay",
+                    "stroke": "hsl(var(--chart-2))"
+                  },
+                  {
+                    "dataKey": "onTimePercentage",
+                    "stroke": "hsl(var(--chart-3))"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "chart-passenger-satisfaction",
+              "type": "gauge",
+              "title": "Passenger Satisfaction",
+              "description": "Overall passenger satisfaction rating",
+              "data": 82.3,
+              "options": {
+                "min": 0,
+                "max": 100,
+                "label": "Satisfaction",
+                "value": 82.3,
+                "thresholds": [
+                  {
+                    "value": 33,
+                    "color": "#ef4444"
+                  },
+                  {
+                    "value": 66,
+                    "color": "#f59e0b"
+                  },
+                  {
+                    "value": 100,
+                    "color": "#10b981"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "routePerformance": {
+      "title": "Route Performance",
+      "charts": [
+        {
+          "gridClass": "grid grid-cols-1 gap-6",
+          "items": [
+            {
+              "id": "route-performance-view",
+              "type": "routePerformance",
+              "title": "Train Route Performance",
+              "description": "Interactive visualization of train route performance across France",
+              "data": [
+                {
+                  "route": "Marseille-Paris",
+                  "onTimePercentage": 42.5,
+                  "averageDelay": 12.3,
+                  "cancelRate": 4.2
+                },
+                {
+                  "route": "Paris-Lyon",
+                  "onTimePercentage": 55.8,
+                  "averageDelay": 8.7,
+                  "cancelRate": 2.8
+                },
+                {
+                  "route": "Lyon-Bordeaux",
+                  "onTimePercentage": 38.2,
+                  "averageDelay": 15.4,
+                  "cancelRate": 5.1
+                },
+                {
+                  "route": "Bordeaux-Nice",
+                  "onTimePercentage": 45.3,
+                  "averageDelay": 11.2,
+                  "cancelRate": 3.5
+                },
+                {
+                  "route": "Nice-Lille",
+                  "onTimePercentage": 51.7,
+                  "averageDelay": 9.8,
+                  "cancelRate": 3.0
+                },
+                {
+                  "route": "Lille-Marseille",
+                  "onTimePercentage": 47.9,
+                  "averageDelay": 10.5,
+                  "cancelRate": 3.8
+                },
+                {
+                  "route": "Paris-Bordeaux",
+                  "onTimePercentage": 58.3,
+                  "averageDelay": 7.9,
+                  "cancelRate": 2.5
+                },
+                {
+                  "route": "Lyon-Nice",
+                  "onTimePercentage": 62.1,
+                  "averageDelay": 6.8,
+                  "cancelRate": 2.2
+                },
+                {
+                  "route": "Marseille-Lyon",
+                  "onTimePercentage": 59.7,
+                  "averageDelay": 7.3,
+                  "cancelRate": 2.4
+                },
+                {
+                  "route": "Lille-Paris",
+                  "onTimePercentage": 67.5,
+                  "averageDelay": 5.2,
+                  "cancelRate": 1.8
+                }
+              ],
+              "options": {
+                "performanceColors": [
+                  { "threshold": 40, "color": "#ef4444" },
+                  { "threshold": 60, "color": "#f59e0b" },
+                  { "threshold": 80, "color": "#10b981" },
+                  { "threshold": 100, "color": "#047857" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "passengerAnalytics": {
+      "title": "Passenger Analytics",
+      "charts": [
+        {
+          "gridClass": "grid grid-cols-1 gap-6 md:grid-cols-2",
+          "items": [
+            {
+              "id": "chart-passenger-volume-hourly",
+              "type": "line",
+              "title": "Passenger Volume by Hour",
+              "description": "Average passenger count by hour of day",
+              "data": [
+                { "hour": 6, "passengers": 850 },
+                { "hour": 7, "passengers": 1250 },
+                { "hour": 8, "passengers": 1750 },
+                { "hour": 9, "passengers": 1500 },
+                { "hour": 10, "passengers": 1200 },
+                { "hour": 11, "passengers": 1100 },
+                { "hour": 12, "passengers": 1300 },
+                { "hour": 13, "passengers": 1400 },
+                { "hour": 14, "passengers": 1250 },
+                { "hour": 15, "passengers": 1350 },
+                { "hour": 16, "passengers": 1550 },
+                { "hour": 17, "passengers": 1850 },
+                { "hour": 18, "passengers": 1950 },
+                { "hour": 19, "passengers": 1650 },
+                { "hour": 20, "passengers": 1350 },
+                { "hour": 21, "passengers": 1050 },
+                { "hour": 22, "passengers": 750 }
+              ],
+              "options": {
+                "categoryKey": "hour",
+                "lines": [
+                  {
+                    "dataKey": "passengers",
+                    "stroke": "hsl(var(--chart-4))"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "chart-passenger-demographics",
+              "type": "pie",
+              "title": "Passenger Demographics",
+              "description": "Breakdown of passenger types",
+              "data": [
+                { "name": "Commuters", "value": 65 },
+                { "name": "Tourists", "value": 15 },
+                { "name": "Students", "value": 12 },
+                { "name": "Business", "value": 8 }
+              ],
+              "options": {
+                "pies": [
+                  {
+                    "dataKey": "value",
+                    "nameKey": "name",
+                    "colors": ["#3b82f6", "#8b5cf6", "#ec4899", "#f97316"]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "gridClass": "grid grid-cols-1 gap-6",
+          "items": [
+            {
+              "id": "chart-passenger-volume-daily",
+              "type": "line",
+              "title": "Passenger Volume by Day",
+              "description": "Total daily passenger count",
+              "data": [
+                { "date": "2024-01-01", "passengers": 24350 },
+                { "date": "2024-02-01", "passengers": 25430 },
+                { "date": "2024-03-01", "passengers": 26120 },
+                { "date": "2024-04-01", "passengers": 25780 },
+                { "date": "2024-05-01", "passengers": 27450 },
+                { "date": "2024-06-01", "passengers": 28650 }
+              ],
+              "options": {
+                "categoryKey": "date",
+                "lines": [
+                  {
+                    "dataKey": "passengers",
+                    "stroke": "hsl(var(--chart-5))"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "weatherImpact": {
+      "title": "Weather & External Factors",
+      "charts": [
+        {
+          "gridClass": "grid grid-cols-1 gap-6 md:grid-cols-2",
+          "items": [
+            {
+              "id": "chart-weather-impact",
+              "type": "bar",
+              "title": "Weather Impact on Delays",
+              "description": "Average delay in minutes by weather condition",
+              "data": [
+                { "condition": "Clear", "averageDelay": 8.2 },
+                { "condition": "Rain", "averageDelay": 15.3 },
+                { "condition": "Snow", "averageDelay": 25.7 },
+                { "condition": "Fog", "averageDelay": 18.2 }
+              ],
+              "options": {
+                "categoryKey": "condition",
+                "bars": [
+                  {
+                    "dataKey": "averageDelay",
+                    "fill": "hsl(var(--chart-7))"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "chart-seasonal-trends",
+              "type": "line",
+              "title": "Seasonal Trends",
+              "description": "Monthly passenger volume and on-time percentage",
+              "data": [
+                { "month": "Jan", "passengers": 720350, "onTimePercentage": 62.3 },
+                { "month": "Feb", "passengers": 685420, "onTimePercentage": 65.1 },
+                { "month": "Mar", "passengers": 742560, "onTimePercentage": 63.8 },
+                { "month": "Apr", "passengers": 758920, "onTimePercentage": 61.2 },
+                { "month": "May", "passengers": 792450, "onTimePercentage": 58.5 },
+                { "month": "Jun", "passengers": 845780, "onTimePercentage": 55.7 }
+              ],
+              "options": {
+                "categoryKey": "month",
+                "lines": [
+                  {
+                    "dataKey": "passengers",
+                    "stroke": "hsl(var(--chart-8))"
+                  },
+                  {
+                    "dataKey": "onTimePercentage",
+                    "stroke": "hsl(var(--chart-9))"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
